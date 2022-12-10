@@ -18,7 +18,6 @@ const getWeatherData = async (infoType: string, searchParams: any) => {
     const res = await fetch(url.href);
     const data = await res.json();
 
-    console.log("this is res: "+data);
 
     return data;
 };
@@ -64,7 +63,6 @@ const formatForecastWeather = async (data: any) => {
         }
     });
     daily =[...new Map(daily.map((item:any)=>[item["title"],item])).values()];
-    console.log("finished list:"+hourly);
     return { timezone, daily, hourly }
  }
 

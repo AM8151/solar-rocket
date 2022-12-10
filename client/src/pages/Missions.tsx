@@ -330,34 +330,6 @@ const Missions = (): JSX.Element => {
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     if (!isLastStep) return next();
-    const launch: Launch = {
-      date: data.date,
-      vehicle: data.vehicle,
-      location: {
-        name: data.name,
-        longitude: data.longitude,
-        latitude: data.latitude,
-      },
-    };
-
-    const orbit: Orbit = {
-      periapsis: data.periapsis,
-      apoapsis: data.apoapsis,
-      inclination: data.inclination,
-    };
-    const payload: Payload = {
-      capacity: data.capacity,
-      available: data.available,
-    };
-    const mission: Mission = {
-      id: " ",
-      title: data.title,
-      operator: data.operator,
-      launch,
-      orbit,
-      payload,
-    };
-    console.log(mission);
 
     postNewMission(data);
     handleNewMissionClose();
@@ -372,7 +344,7 @@ const Missions = (): JSX.Element => {
         })
         .catch((err) => {
           setErrMessage("Failed to load missions.");
-          console.log(err);
+   
         });
     }
   }
@@ -380,7 +352,7 @@ const Missions = (): JSX.Element => {
     e.preventDefault();
     updateMission(editData)
       .then((result: MissionResponse) => {
-        console.log(result.data.Mission);
+  
         handleEditMissionClose();
         setSubmitting(!submited);
       })
@@ -393,7 +365,6 @@ const Missions = (): JSX.Element => {
     getMissions(sortField, sortDesc)
       .then((result: MissionsResponse) => {
         setMissions(result.data.Missions);
-        console.log(result.data.Missions);
       })
       .catch((err) => {
         setErrMessage("Failed to load missions.");

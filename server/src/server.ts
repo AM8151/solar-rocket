@@ -94,7 +94,6 @@ const main = async () => {
         },
         async updateMission(obj, args) {
           const missions = await loadMissions();
-          console.log("this is new title: "+args.title)
          const mission = UpdateMission(missions,args.mission);
 
           await writeFile(

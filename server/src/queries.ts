@@ -46,12 +46,11 @@ export const CreateMission = (mission: Mission): Mission => {
   return mission;
 };
 export const UpdateMission = (missions: Mission[],mission:Mission):Mission =>{
-   //var mission= GetMissionById(missions,id);
-   const indexOfObject = missions.findIndex((object) => {
-    return object.id === mission.id;
+   const index = missions.findIndex((mision) => {
+    return mision.id === mission.id;
   });
  
-   missions.splice(indexOfObject, 1,mission);    if(mission!==undefined){
+   missions.splice(index, 1,mission);    if(mission!==undefined){
      
       return mission;
      }
@@ -63,7 +62,6 @@ export const DeleteMission = (missions: Mission[],id:String):Mission[] =>{
     return mision.id === id;
   });
   
-  console.log(index); 
   
   if (index !== -1) {
    missions.splice(index, 1);
